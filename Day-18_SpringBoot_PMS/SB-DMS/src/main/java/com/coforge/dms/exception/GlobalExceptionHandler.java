@@ -1,0 +1,20 @@
+package com.coforge.dms.exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+	@ExceptionHandler(DepartmentNotFoundException.class)
+	public String handleDepartmentNotFoundException(DepartmentNotFoundException ex) {
+		return ex.getMessage();
+	}
+
+	@ExceptionHandler(Exception.class)
+	public String handleException(Exception ex) {
+		return "Error : " + ex.getMessage();
+	}
+
+}
